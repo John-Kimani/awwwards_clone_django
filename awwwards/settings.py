@@ -39,8 +39,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'awwards',
+    'awwards.apps.AwwardsConfig',
     'bootstrap4',
+    'members.apps.MembersConfig',
 ]
 
 MIDDLEWARE = [
