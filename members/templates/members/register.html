@@ -3,7 +3,7 @@
 {% block content %}
     <div class="container">
         <form action="" method="POST">
-            {% csrt_token %}
+            {% csrf_token %}
             <fieldset class="form-group">
                 <legend class="border-bottom mb-5">Sign Up Here</legend>
                 {{ form }}
