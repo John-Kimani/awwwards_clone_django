@@ -24,17 +24,19 @@ def member_profile(request):
     '''
     View function that render users profile
     '''
+    current_user = request.user
     profile = Profile.display_member_profile()
     form = ProfileUpdateForm
     if request.method == 'POST':
         form = ProfileUpdateForm(request.POST, request.FILES)
         if form.is_valid():
-            update = Profile()
+            update = Profile(commit=False)
             update.profile_picture = form.cleaned_data['profile_picture']
             update.member_bio = form.cleaned_data['member_bio']
             update.nickname = form.cleaned_data['nickname']
             update.contact = form.cleaned_data['contact']
             update.website = form.cleaned_data['website']
+            update.user = current_user
             update.save()
             return redirect('profile')
         
