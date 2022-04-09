@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import MemberRegisterForm
 from django.contrib.auth.decorators import login_required
+from .models import Profile
 
 def register(request):
     '''
@@ -23,4 +24,6 @@ def member_profile(request):
     '''
     View function that render users profile
     '''
-    return render(request, 'members/profile.html')
+    profile = Profile.display_member_profile()
+
+    return render(request, 'members/profile.html', {"profiles":profile})

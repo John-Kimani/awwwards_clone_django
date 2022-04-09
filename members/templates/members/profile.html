@@ -2,17 +2,49 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <!-- empty -->
+    <div class="container container-fluid">
+        <div class="row mt-3">
+            {% for profile in profiles %}
+            <div class="col-md-8">
+                <div class="profile card">
+                    <div class="row mt-1">
+                        <div class="col-md-4">
+                            <!-- empty -->
+                        </div>
+                        <div class="col-md-4">
+                            <img src="{{ user.profile.profile_picture.url}}" class="rounded-circle img-fluid img-thumbnail" style="height: 200px; width: 200px; object-position: center;">
+                        </div>
+                        <div class="col-md-4">
+                            <!-- empty -->
+                        </div>
+                    </div>
+                    
+                    <div class="card-title">
+                        <h2 class="text-center">{{ user.username }}</h2>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-center">{{ profile.member_bio }}</p>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input type="text" class="btn" value="{{profile.website}}">
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" class="btn" value="{{profile.contact}}">
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" class="btn" value="{{user.email}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <small><span>Member since: {{ profile.date_joined }}</span></small>
+                    </div>
+                </div>
             </div>
             <div class="col-md-4">
-                <h2>{{ user.username }}</h2>
+                <h4>Update your Profile information</h4>
             </div>
-            <div class="col-md-4">
-                <!-- empty -->
-            </div>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}
