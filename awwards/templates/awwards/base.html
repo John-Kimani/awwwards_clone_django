@@ -22,14 +22,16 @@
 
     {% include "awwards/navbar.html" %}
 
-
-    {% if messages %}
+    <div class="container conatiner-fluid">
+        {% if messages %}
         {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}">
+            <div class="text-center alert alert-{{ message.tags }}">
                 {{ message }}
             </div>
         {% endfor %}
     {% endif %}
+    </div>
+
     {% block content %}
 
         <!-- templates -->
