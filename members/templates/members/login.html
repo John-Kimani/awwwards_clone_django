@@ -1,0 +1,43 @@
+{% extends 'awwards/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <!-- empty -->
+            </div>
+            <div class="col-md-4">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <h4 class="text-center border-bottom">Log In</h4>
+                        {{ form|crispy }}
+                    </fieldset>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <!-- empty -->
+                            </div>
+                            <div class="col-md-4">
+                                <button class="btn btn-outline-info" type="submit">Log In</button>
+                            </div>
+                            <div class="col-md-4">
+                                <!-- empty -->
+                            </div>
+                        </div>
+                        
+                    </div>
+                </form>
+                <div class="pt-5 border-top">
+                    <small class="text-muted">
+                        New here, need an account? <a href="{% url 'register' %}">Sign Up</a>
+                    </small>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <!-- empty -->
+            </div>
+        </div>
+    </div>
+{% endblock %}
