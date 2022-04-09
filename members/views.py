@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .forms import MemberRegisterForm
+from .forms import MemberRegisterForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 from .models import Profile
 
@@ -25,5 +25,17 @@ def member_profile(request):
     View function that render users profile
     '''
     profile = Profile.display_member_profile()
-
-    return render(request, 'members/profile.html', {"profiles":profile})
+    form = ProfileUpdateForm
+    if request.method == 'POST':
+        form = ProfileUpdateForm(request.POST, request.FILES)
+        if form.is_valid():
+            update = Profile()
+            update.profile_picture = form.cleaned_data['profile_picture']
+            update.member_bio = form.cleaned_data['member_bio']
+            update.nickname = form.cleaned_data['nickname']
+            update.contact = form.cleaned_data['contact']
+            update.website = form.cleaned_data['website']
+            update.save()
+            return redirect('profile')
+        
+    return render(request, 'members/profile.html', {"profiles":profile, "form":form})

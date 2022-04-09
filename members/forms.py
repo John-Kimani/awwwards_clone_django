@@ -17,5 +17,5 @@ class MemberRegisterForm(UserCreationForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['__all__']
+        fields = "__all__"
         exclude = ['member', 'date_joined']

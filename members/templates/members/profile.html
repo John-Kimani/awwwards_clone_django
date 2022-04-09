@@ -43,6 +43,28 @@
             </div>
             <div class="col-md-4">
                 <h4>Update your Profile information</h4>
+                <div class="card container container-fluid">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            {{ form|crispy }}
+                        </fieldset>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <!-- empty -->
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-outline-info" type="submit">Update</button>
+                                </div>
+                                <div class="col-md-4">
+                                    <!-- empty -->
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </form>
+                </div>
             </div>
             {% endfor %}
         </div>
