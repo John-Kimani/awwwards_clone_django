@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .forms import ProjectSubmissionForm
 
 
 def homepage(request):
@@ -13,5 +14,6 @@ def publish_project(request):
     '''
     View function that render postproject page
     '''
+    form = ProjectSubmissionForm()
 
-    return render(request, 'awwards/submitproject.html')
+    return render(request, 'awwards/submitproject.html', {"form":form})
