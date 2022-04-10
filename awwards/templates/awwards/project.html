@@ -1,0 +1,71 @@
+{% extends 'awwards/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container container-fluid">
+        <div class="row mt-3">
+            <div class="col-md-8">
+                <div class="profile card">
+                    <div class="row mt-1">
+                        <div class="col-md-4">
+                            <!-- empty -->
+                        </div>
+                        <div class="col-md-4">
+                            <img src="#" class="rounded-circle img-fluid img-thumbnail" style="height: 200px; width: 200px; object-position: center;">
+                        </div>
+                        <div class="col-md-4">
+                            <!-- empty -->
+                        </div>
+                    </div>
+                    
+                    <div class="card-title">
+                        <h2 class="text-center">Project Name</h2>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-center">About project</p>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <input type="text" class="btn" value="Project Link">
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" class="btn" value="owner Phone">
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" class="btn" value="Owner EMail">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <small><span>Created on:</span></small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h4>Update your Profile information</h4>
+                <div class="card container container-fluid">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <fieldset class="form-group">
+                            {{ form|crispy }}
+                        </fieldset>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <!-- empty -->
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-outline-info" type="submit">Update</button>
+                                </div>
+                                <div class="col-md-4">
+                                    <!-- empty -->
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

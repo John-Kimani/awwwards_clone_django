@@ -17,3 +17,9 @@ def publish_project(request):
     form = ProjectSubmissionForm()
 
     return render(request, 'awwards/submitproject.html', {"form":form})
+
+def update_project(request):
+    '''
+    View function that render project update from
+    '''
+    return render(request, 'awwards/project.html')
