@@ -1,7 +1,8 @@
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from awwards.models import Projects
-from .serializers import ProjectsSerializer
+from members.models import Profile
+from .serializers import ProjectsSerializer, ProfileSerializer
 from rest_framework.views import APIView
 from rest_framework import status
 
@@ -27,3 +28,15 @@ class ProjectsData(APIView):
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class ProfileData(APIView):
+    '''
+    Class that provides project data
+    '''
+    def get(self, request, format=None):
+        '''
+        API view function that get profile data
+        '''
+        profile = Profile.objects.all()
+        serializer = ProfileSerializer(profile, many=True)
+        return Response(serializer.data)
