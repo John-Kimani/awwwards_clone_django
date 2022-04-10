@@ -18,6 +18,7 @@ from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from members import views as members_views
 from api.views import ProjectsData as project_views
+from api.views import ProfileData as profile_views
 from api import views
 
 urlpatterns = [
@@ -34,5 +35,6 @@ urlpatterns = [
     path('api/', include('api.urls')),
 
     path('api/projects/', views.ProjectsData.as_view()),
+    path('api/profile/', views.ProfileData.as_view()),
 
 ]
