@@ -1,5 +1,5 @@
 from django.test import TestCase
-from .models import Projects
+from .models import Projects,Rating
 
 
 class ProjectTestClass(TestCase):
@@ -11,3 +11,15 @@ class ProjectTestClass(TestCase):
     
     def test_instance(self):
         self.assertTrue(isinstance(self.project, Projects))
+
+
+
+class RatingTestClass(TestCase):
+    '''
+    Class that test rating model
+    '''
+    def setup(self):
+        self.rates = Rating(design=10,usability=10, content=10, score=10)
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.rates, Rating))
