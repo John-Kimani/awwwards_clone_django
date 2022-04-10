@@ -1,13 +1,15 @@
 from django.shortcuts import render
 from .forms import ProjectSubmissionForm
+from .models import Projects
 
 
 def homepage(request):
     '''
     View function that renders homepage
     '''
+    projects = Projects.objects.all()
 
-    return render(request, 'awwards/homepage.html')
+    return render(request, 'awwards/homepage.html', {"projects": projects})
 
 
 def publish_project(request):
