@@ -2,27 +2,16 @@
 
 {% block content %}
     <div class="container container-fluid">
-        <p>It works</p>
         <div class="card">
+            <img class="card-img-top" src="{{ project.image.url}}" alt="Card image cap">
             <div class="card-title">
-                <h2 class="text-center">Project Name</h2>
+                <h2 class="text-center">{{project.title}}</h2>
             </div>
             <div class="card-body">
-                <p class="text-center">About project</p>
-                <div class="row">
-                    <div class="col-md-4">
-                        <input type="text" class="btn" value="Project Link">
-                    </div>
-                    <div class="col-md-4">
-                        <input type="text" class="btn" value="owner Phone">
-                    </div>
-                    <div class="col-md-4">
-                        <input type="text" class="btn" value="Owner EMail">
-                    </div>
-                </div>
+                <p class="text-center">{{project.article}}</p>
             </div>
             <div class="card-footer">
-                <small><span>Created on:</span></small>
+                <small><span>Posted on:{{ project.pub_date }}</span></small>
             </div>
         </div>
     </div>
