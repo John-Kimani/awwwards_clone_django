@@ -14,13 +14,13 @@ class Profile(models.Model):
     website = models.URLField(max_length=200, blank=True, null=False)
 
 
-    @classmethod
-    def display_member_profile(cls):
-        '''
-        Function that displays members information
-        '''
-        profile = cls.objects.all()
-        return profile
+    # @classmethod
+    # def display_member_profile(cls):
+    #     '''
+    #     Function that displays members information
+    #     '''
+    #     profile = cls.objects.all()
+    #     return profile
 
     def __str__(self):
         return self.nickname

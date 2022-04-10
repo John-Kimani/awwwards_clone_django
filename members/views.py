@@ -3,6 +3,7 @@ from django.contrib import messages
 from .forms import MemberRegisterForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required
 from .models import Profile
+from django.contrib.auth.models import User
 
 def register(request):
     '''
@@ -25,7 +26,10 @@ def member_profile(request):
     View function that render users profile
     '''
     current_user = request.user
-    profile = Profile.display_member_profile()
+    print(current_user)
+    user = User.objects.get(username=current_user)
+    print(user)
+    profile = Profile.objects.all()
     form = ProfileUpdateForm
     if request.method == 'POST':
         form = ProfileUpdateForm(request.POST, request.FILES)
