@@ -30,7 +30,7 @@ def member_profile(request):
     if request.method == 'POST':
         form = ProfileUpdateForm(request.POST, request.FILES)
         if form.is_valid():
-            update = Profile(commit=False)
+            update = Profile()
             update.profile_picture = form.cleaned_data['profile_picture']
             update.member_bio = form.cleaned_data['member_bio']
             update.nickname = form.cleaned_data['nickname']
