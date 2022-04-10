@@ -1,6 +1,37 @@
 {% extends 'awwards/base.html' %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
-    <p>Project page</p>
+    <div class="container container-fluid">
+        <div class="row">
+            <div class="col-md-6">
+                <!-- project preview -->
+            </div>
+            <div class="col-md-6">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <fieldset class="form-group">
+                        <!-- <legend class="text-center border-bottom">Sign Up Here</legend> -->
+                        <h4 class="text-center border-bottom">Submit Your Project</h4>
+                        {{ form|crispy }}
+                    </fieldset>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <!-- empty -->
+                            </div>
+                            <div class="col-md-4">
+                                <button class="btn btn-outline-info" type="submit">Sign Up</button>
+                            </div>
+                            <div class="col-md-4">
+                                <!-- empty -->
+                            </div>
+                        </div>
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}
