@@ -7,3 +7,11 @@ def homepage(request):
     '''
 
     return render(request, 'awwards/homepage.html')
+
+
+def publish_project(request):
+    '''
+    View function that render postproject page
+    '''
+
+    return render(request, 'awwards/submitproject.html')
