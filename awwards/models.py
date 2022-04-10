@@ -13,6 +13,9 @@ class Projects(models.Model):
     image = CloudinaryField('images/')
     pub_date = models.DateField(auto_now_add=True)
 
+    @classmethod
+    def get_project(cls, pk):
+        return cls.objects.get(id=pk)
 
     def __str__(self):
         return self.title

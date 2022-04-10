@@ -40,6 +40,6 @@ def update_project(request):
     '''
     return render(request, 'awwards/project.html')
 
-def view_project(request):
-
-    return render(request, 'awwards/singleproject.html')
+def view_project(request, project_id):
+    project = Projects.objects.get(pk = project_id)
+    return render(request, 'awwards/singleproject.html',{"projects":project})
