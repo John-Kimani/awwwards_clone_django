@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from .forms import ProjectSubmissionForm,UpdateProjectForm
 from .models import Projects
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 
 def homepage(request):
@@ -12,7 +13,7 @@ def homepage(request):
 
     return render(request, 'awwards/homepage.html', {"projects": projects})
 
-
+@login_required()
 def publish_project(request):
     '''
     View function that render postproject page
@@ -34,12 +35,14 @@ def publish_project(request):
 
     return render(request, 'awwards/submitproject.html', {"form":form})
 
+@login_required()
 def update_project(request):
     '''
     View function that render project update from
     '''
     form = UpdateProjectForm()
     return render(request, 'awwards/project.html',{"form":form})
+
 
 def view_project(request, project_id):
     '''
