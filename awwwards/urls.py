@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from members import views as members_views
+from api.views import ProjectsData as project_views
+from api import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -30,5 +32,7 @@ urlpatterns = [
 
     #backend-apis
     path('api/', include('api.urls')),
+
+    path('api/projects/', views.ProjectsData.as_view()),
 
 ]
