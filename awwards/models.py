@@ -17,3 +17,16 @@ class Projects(models.Model):
     def __str__(self):
         return self.title
 
+
+class Rating(models.Model):
+    '''
+    Class that handles project rating
+    '''
+    project = models.ForeignKey(Projects, on_delete=models.CASCADE, related_name='ratings', null=True)
+    design = models.IntegerField(blank=True)
+    usability = models.IntegerField(blank=True)
+    content = models.IntegerField(blank=True)
+    score = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, related_name='authorrates')
+
+    def __str__(self):
+        return f'{self.project} Ratings'
