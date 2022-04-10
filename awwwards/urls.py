@@ -28,4 +28,7 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(template_name='members/logout.html'), name='logout'),
     path('profile/', members_views.member_profile, name='profile'),
 
+    #backend-apis
+    path('api/', include('api.urls')),
+
 ]
