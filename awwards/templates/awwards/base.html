@@ -16,13 +16,13 @@
     {% block styles %}
         {% bootstrap_css %}
     {% endblock %}
-    <link rel="stylesheet" href="/static/styles/base.css">
+    <link rel="stylesheet" type="text/css" href="{% static '/styles/base.css' %}">
 </head>
 <body>
 
     {% include "awwards/navbar.html" %}
 
-    <div class="container conatiner-fluid">
+    <div class="container container-fluid">
         {% if messages %}
         {% for message in messages %}
             <div class="text-center alert alert-{{ message.tags }}">
