@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import ProjectSubmissionForm
+from .forms import ProjectSubmissionForm,UpdateProjectForm
 from .models import Projects
 from django.contrib import messages
 
@@ -38,8 +38,12 @@ def update_project(request):
     '''
     View function that render project update from
     '''
-    return render(request, 'awwards/project.html')
+    form = UpdateProjectForm()
+    return render(request, 'awwards/project.html',{"form":form})
 
 def view_project(request, project_id):
+    '''
+    View function that render project on one page 
+    '''
     project = Projects.objects.get(pk = project_id)
     return render(request, 'awwards/singleproject.html',{"projects":project})
