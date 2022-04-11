@@ -21,14 +21,27 @@ class Projects(models.Model):
         return self.title
 
 
+RATES = [
+    (1, '1- Poor'),
+    (2,'2- Bad'),
+    (3,'3- Not Satisfying'),
+    (4, '4- Not Good'),
+    (5,'5- Average'),
+    (6,'6- Fair'),
+    (7,'7- Good'),
+    (8,'8- Better'),
+    (9, '9- Best'),
+    (10, '10- Excellent'),
+]
+
 class Rating(models.Model):
     '''
     Class that handles project rating
     '''
     project = models.ForeignKey(Projects, on_delete=models.CASCADE, related_name='ratings', null=True)
-    design = models.IntegerField(blank=True)
-    usability = models.IntegerField(blank=True)
-    content = models.IntegerField(blank=True)
+    design = models.PositiveSmallIntegerField(choices = RATES, default=0,blank=True)
+    usability = models.PositiveSmallIntegerField(choices = RATES, default=0,blank=True)
+    content = models.PositiveSmallIntegerField(choices = RATES, default=0,blank=True)
     score = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, related_name='authorrates')
 
     def __str__(self):
