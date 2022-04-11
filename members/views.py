@@ -29,8 +29,7 @@ def member_profile(request):
     print(current_user)
     user = User.objects.get(username=current_user)
     print(user)
-    # profile = Profile.objects.get(user = request.current_user)
-    profile = Profile.objects.all()
+    profile = Profile.objects.filter(member=request.user).first()
     form = ProfileUpdateForm
     if request.method == 'POST':
         form = ProfileUpdateForm(request.POST, request.FILES)
@@ -45,4 +44,4 @@ def member_profile(request):
             update.save()
             return redirect('profile')
         
-    return render(request, 'members/profile.html', {"profiles":profile, "form":form})
+    return render(request, 'members/profile.html', {"profile":profile, "form":form})
