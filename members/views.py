@@ -29,6 +29,7 @@ def member_profile(request):
     print(current_user)
     user = User.objects.get(username=current_user)
     print(user)
+    # profile = Profile.objects.get(user = request.current_user)
     profile = Profile.objects.all()
     form = ProfileUpdateForm
     if request.method == 'POST':

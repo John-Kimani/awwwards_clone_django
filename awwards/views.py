@@ -49,4 +49,4 @@ def view_project(request, project_id):
     View function that render project on one page 
     '''
     project = Projects.objects.get(pk = project_id)
-    return render(request, 'awwards/singleproject.html',{"projects":project})
+    return render(request, 'awwards/singleproject.html',{"project":project})
