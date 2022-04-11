@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect
 from .forms import ProjectSubmissionForm,UpdateProjectForm,RateProjectForm
-from .models import Projects
+from .models import Projects,Rating
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
@@ -50,4 +50,15 @@ def view_project(request, project_id):
     '''
     project = Projects.objects.get(pk = project_id)
     form = RateProjectForm()
+    if request.method == 'POST': 
+        rating = Rating()
+        rating.project = form.cleaned_data['project']
+        rating.design = form.cleaned_data['design']
+        rating.usability = form.cleaned_data['usability']
+        rating.score = form.cleaned_data['score']
+        rating.save()
+        messages.success(request, f'Your ratiing has been submitted')
+        return redirect('singleproject')
+    else:
+        form = RateProjectForm()
     return render(request, 'awwards/singleproject.html',{"project":project, "form":form})
