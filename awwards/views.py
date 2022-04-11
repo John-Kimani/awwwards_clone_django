@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import ProjectSubmissionForm,UpdateProjectForm
+from .forms import ProjectSubmissionForm,UpdateProjectForm,RateProjectForm
 from .models import Projects
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
@@ -49,4 +49,5 @@ def view_project(request, project_id):
     View function that render project on one page 
     '''
     project = Projects.objects.get(pk = project_id)
-    return render(request, 'awwards/singleproject.html',{"project":project})
+    form = RateProjectForm()
+    return render(request, 'awwards/singleproject.html',{"project":project, "form":form})

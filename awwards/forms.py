@@ -1,5 +1,5 @@
 from django import forms
-from .models import Projects
+from .models import Projects,Rating
 
 
 class ProjectSubmissionForm(forms.ModelForm):
@@ -18,3 +18,11 @@ class UpdateProjectForm(forms.ModelForm):
         model = Projects
         fields = '__all__'
         exclude = ['user','pub_date']
+
+class RateProjectForm(forms.ModelForm):
+    '''
+    Class that handles ratings
+    '''
+    class Meta:
+        model = Rating
+        fields = '__all__'
